@@ -4,14 +4,14 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar-fixed">
-        <nav className="z-depth-0">
-          <div className="nav-wrapper white">
+        <nav class=" blue-grey darken-3"> 
+          <div className="nav-wrapper">
             <Link
               to="/"
               style={{
                 fontFamily: "monospace"
               }}
-              className="col s5 brand-logo center black-text"
+              className="col s5 brand-logo center white-text"
             >
               <i className="material-icons">group</i>
               NUSGetsIT
