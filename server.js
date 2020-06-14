@@ -14,6 +14,7 @@ app.use(
 app.use(bodyParser.json());
 // DB Config
 const db = require("./config/keys").mongoURI;
+//mongodb+srv://sthiti:testpassword@cluster0-udycj.mongodb.net/NUSGetsIT?retryWrites=true&w=majority
 // Connect to MongoDB
 mongoose
   .connect(
