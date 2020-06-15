@@ -18,7 +18,8 @@ class Navbar extends Component {
             </Link>
           </div>
         </nav>
-      </div>
+        <a href="/sidebar" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
     );
   }
 }

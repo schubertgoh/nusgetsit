@@ -1,20 +1,31 @@
 import React, {Component} from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 class CreateEvent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            event_title: '',
             event_location: '',
             event_time: '',
             event_description: '',
             event_completed: false
         }
+        this.onChangeEventTitle = this.onChangeEventTitle.bind(this);
         this.onChangeEventLocation = this.onChangeEventLocation.bind(this);
         this.onChangeEventTime = this.onChangeEventTime.bind(this);
         this.onChangeEventDescription = this.onChangeEventDescription.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+
+    onChangeEventTitle(e) {
+        this.setState({
+            event_title: e.target.value
+        });
+    }
+
     onChangeEventLocation(e) {
         this.setState({
             event_location: e.target.value
@@ -37,11 +48,24 @@ class CreateEvent extends Component {
         e.preventDefault();
         
         console.log(`Event Created:`);
+        console.log(`Event Title: ${this.state.event_title}`);
         console.log(`Event Location: ${this.state.event_location}`);
         console.log(`Event Time: ${this.state.event_time}`);
         console.log(`Event Description: ${this.state.event_description}`);
         
+        const newEvent = {
+            event_title: this.state.event_title,
+            event_description: this.state.event_description,
+            event_location: this.state.event_location,
+            event_time: this.state.event_time,
+            event_completed: this.state.event_completed
+        };
+
+        axios.post('http://localhost:4000/events', newEvent)
+            .then(res => console.log(res.data));
+        
         this.setState({
+            event_title: '',
             event_location: '',
             event_time: '',
             event_description: '',
@@ -54,7 +78,7 @@ class CreateEvent extends Component {
             <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">
           <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
+            <Link to="/events" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
               Events
             </Link>
@@ -64,6 +88,16 @@ class CreateEvent extends Component {
               </h4>
             </div>
             <form  onSubmit={this.onSubmit}>
+                <div className="input-field col s12">
+                <input
+                  onChange={this.onChangeEventTitle}
+                  value={this.state.event_title}
+                  id="text"
+                  type="text"
+                  className="form-control"
+                />
+                <label htmlFor="describe">Title</label>
+              </div>
               <div className="input-field col s12">
                 <input
                   onChange={this.onChangeEventDescription}

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
-class Dashboard extends Component {
+class Sidebar extends Component {
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
@@ -12,7 +12,7 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
     return (
         <div class="row">
-            <ul id="slide-out" class="sidenav sidenav-fixed">
+            <ul id="slide-out" class="sidenav">
             <li><div class="user-view">
             <a href="#name"><span class="black-text name">Welcome, <b>{user.name.split(" ")[0]}</b></span></a>
             </div></li>
@@ -35,18 +35,11 @@ class Dashboard extends Component {
                     Logout
                 </button>
             </ul>
-            <div class="col s12">
-              <ul class="tabs teal lighten-4">
-                <li class="tab col s3"><a href="#test1"><span class="black-text">Communities you follow</span></a></li>
-                <li class="tab col s3"><a href="#test2"><span class="black-text">Trending Communities</span></a></li>
-                <li class="tab col s3"><a href="#test3"><span class="black-text">Explore Communities</span></a></li>
-              </ul>
-            </div>
         </div>
     );
   }
 }
-Dashboard.propTypes = {
+Sidebar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -56,4 +49,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Dashboard);
+)(Sidebar);
