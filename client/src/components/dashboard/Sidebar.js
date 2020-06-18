@@ -12,14 +12,14 @@ class Sidebar extends Component {
     const { user } = this.props.auth;
     return (
         <div class="row">
-            <ul id="slide-out" class="sidenav">
+            <ul id="slide-out" class="sidenav sidenav-fixed">
             <li><div class="user-view">
             <a href="#name"><span class="black-text name">Welcome, <b>{user.name.split(" ")[0]}</b></span></a>
             </div></li>
             <li><i class="black-text material-icons prefix">search</i>
             <input type="text" class="black-text" ></input></li>
             <li><a href="/dashboard"><i class="black-text material-icons">home</i><span class="black-text">Home</span></a></li>
-            <li><a href="/event"><i class="black-text material-icons">event</i><span class="black-text">Events</span></a></li>
+            <li><a href="/eventpage"><i class="black-text material-icons">event</i><span class="black-text">Events</span></a></li>
             <li><a href="#!"><i class="black-text material-icons">bookmark_border</i><span class="black-text">Saved</span></a></li>
             <li><div class="divider"></div></li>
             <button
@@ -35,6 +35,13 @@ class Sidebar extends Component {
                     Logout
                 </button>
             </ul>
+          <div class="col s12 offset-s3">
+            <ul class="tabs">
+              <li class="tab col s3"><a href="#test1"><span class="black-text">Communities you follow</span></a></li>
+              <li class="tab col s3"><a href="#test2"><span class="black-text">Trending Communities</span></a></li>
+              <li class="tab col s3"><a href="#test3"><span class="black-text">Explore Communities</span></a></li>             
+            </ul>
+          </div>   
         </div>
     );
   }

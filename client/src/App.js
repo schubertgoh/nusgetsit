@@ -16,6 +16,9 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateEvent from './components/event/CreateEvent';
 import Event from './components/event/Event';
+import Questions from './components/event/Questions';
+import EventPage from './components/event/EventPage';
+import Sidebar from './components/dashboard/Sidebar';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -46,9 +49,13 @@ class App extends React.Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Switch>
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                <PrivateRoute exact path="/createevent" component={CreateEvent} />
-                <PrivateRoute exact path="/event" component={Event} />
+              <PrivateRoute exact path="/dashboard" component={Sidebar} />
+              <div>
+              <PrivateRoute exact path="/eventpage" component={EventPage} />
+              <PrivateRoute exact path='/question' component={Questions}/>
+              <div><PrivateRoute exact path='/question/:questionId' component={Event}/></div>
+              <div><PrivateRoute path='/new-question'component={CreateEvent} /></div>
+              </div>
             </Switch>
           </div>
         </Router>

@@ -17,6 +17,10 @@ const EventSchema = new Schema({
   time: {
     type: Number,
     required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 });
-module.exports = User = mongoose.model("events", EventSchema);
+module.exports = Events = mongoose.model("events", EventSchema);

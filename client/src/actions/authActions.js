@@ -64,3 +64,15 @@ export const logoutUser = () => dispatch => {
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };
+
+export const saveEvent = (userData, history) => dispatch => {
+  axios
+    .post("/api/events/createevent", userData)
+    .then(res => history.push("/event")) // re-direct to event on successful event creation
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
