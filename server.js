@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
 const events = require("./routes/api/events");
+const communities = require("./routes/api/communities");
 const app = express();
 const path = require('path');
 // Bodyparser middleware
@@ -15,7 +16,6 @@ app.use(
 app.use(bodyParser.json());
 // DB Config
 const db = require("./config/keys").mongoURI;
-//mongodb+srv://sthiti:testpassword@cluster0-udycj.mongodb.net/NUSGetsIT?retryWrites=true&w=majority
 // Connect to MongoDB
 mongoose
   .connect(
@@ -31,6 +31,7 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 app.use("/api/events", events);
+app.use("/api/communities", communities);
 //serve static assets if in production
 if(process.env.NODE_ENV === 'production') {
   //set static folder

@@ -9,14 +9,14 @@ const validateEventInput = require("../../validation/event");
 // Load Events model
 const Events = require("../../models/Event");
 
-router.post("/createevent", (req, res) => {
+router.post("/new-event", (req, res) => {
     // Form validation
   const { errors, isValid } = validateEventInput(req.body);
   // Check validation
     if (!isValid) {
       return res.status(400).json(errors);
     }
-  User.findOne({ event_title: req.body.event_title }).then(user => {
+  Events.findOne({ event_title: req.body.event_title }).then(user => {
       if (user) {
         return res.status(400).json({ event_title: "Event with same title exists" });
       } else {

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
+//import { API_URL } from '../../hosts';
 class Register extends Component {
   constructor() {
     super();
@@ -12,6 +13,7 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
+      sendingEmail: false,
       errors: {}
     };
   }
@@ -40,7 +42,8 @@ const newUser = {
       password2: this.state.password2
     };
 this.props.registerUser(newUser, this.props.history); 
-  };
+}
+
 render() {
     const { errors } = this.state;
 return (

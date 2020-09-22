@@ -1,0 +1,12 @@
+#userProfile{
+    height: 100vh;
+    background-image: url("https://wallpaperhd.wiki/wp-content/uploads/hd-backgrounds-websites-wallpaper-website-background-lines-texture1095.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -1;
+}
+#mainText{
+    margin-top: 30vh;
+}

@@ -26,7 +26,8 @@ class SubmitAnswer extends Component {
   render() {
     return (
       <Fragment>
-        <div className="form-group">
+        <div className="form-group text-left">
+         
           <input
             type="text"
             onChange={(e) => {this.updateAnswer(e.target.value)}}
@@ -36,20 +37,17 @@ class SubmitAnswer extends Component {
           />
         </div>
         <span><button
-          class="waves-effect waves-teal btn-flat"
+          className="btn btn-primary"
           onClick={() => {this.submit()}}>
           Post
         </button></span>
-        <button 
-                class="waves-effect waves-teal btn-flat"
+        <button className="btn btn-transparent"
                 onClick = {(e) => alert('Shared to your friends!')}>Share ↪</button>
-                <button 
-                class="waves-effect waves-teal btn-flat"
+                <button className="btn btn-transparent"
                 onClick = {(e) => alert('Saved!')}>Save <i class="material-icons">save</i></button>
-                <button 
-                class="waves-effect waves-teal btn-flat"
+                <button className="btn btn-transparent"
                 onClick = {(e) => alert('Reported!')}>Report <i class="material-icons">report_problem</i></button> 
-        <hr className="m6" />
+        <hr className="my-4" />
       </Fragment>
     )
   }

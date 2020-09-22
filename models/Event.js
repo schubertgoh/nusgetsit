@@ -14,13 +14,13 @@ const EventSchema = new Schema({
     type: String,
     required: true
   },
+  date: {
+    type: Date,
+    required: true
+  },
   time: {
     type: Number,
     required: true
   },
-  date: {
-    type: Date,
-    default: Date.now
-  }
 });
 module.exports = Events = mongoose.model("events", EventSchema);

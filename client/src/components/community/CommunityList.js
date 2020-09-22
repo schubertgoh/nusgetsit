@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-class EventPage extends React.Component {
+class CommunityList extends React.Component {
       onLogoutClick = e => {
         e.preventDefault();
         this.props.logoutUser();
@@ -19,7 +19,7 @@ class EventPage extends React.Component {
                 <li><i class="black-text material-icons prefix">search</i>
                 <input type="text" class="black-text" ></input></li>
                 <li><a href="/dashboard"><i class="black-text material-icons">home</i><span class="black-text">Home</span></a></li>
-                <li><a href="/events"><i class="black-text material-icons">event</i><span class="black-text">Events</span></a></li>
+                <li><a href="/communities"><i class="black-text material-icons">forum</i><span class="black-text">Communities</span></a></li>
                 <li><a href="#!"><i class="black-text material-icons">bookmark_border</i><span class="black-text">Saved</span></a></li>
                 <li><div class="divider"></div></li>
                 <button
@@ -36,20 +36,21 @@ class EventPage extends React.Component {
                     </button>
                 </ul>
     <ul class="collection with-header">
-    <li class="collection-header blue-grey lighten-3"><h4>Events</h4></li>
-    <li class="collection-item"><Link to='/new-event'>
+    <li class="collection-header blue-grey lighten-3"><h4>Communities</h4></li>
+    <li class="collection-item"><Link to='/new-community'>
       <button
                   style={{
-                    width: "250px",
+                    width: "300px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
                     marginTop: "1rem"
                 }}
                 type="submit"
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3">
-                  Create an Event
+                  Create a new Community
                 </button>
       </Link></li>
+      
     <li class="collection-item"><div><form class="form-inline">
       <i class="black-text material-icons prefix">search</i>
       <input type="text" class="black-text" ></input>
@@ -60,7 +61,7 @@ class EventPage extends React.Component {
   );
   }
 }
-EventPage.propTypes = {
+CommunityList.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
   };
@@ -70,4 +71,4 @@ EventPage.propTypes = {
   export default connect(
     mapStateToProps,
     { logoutUser }
-  )(EventPage);
+  )(CommunityList);

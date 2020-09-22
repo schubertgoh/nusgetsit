@@ -9,11 +9,11 @@ module.exports = function validateEventInput(data) {
   data.event_time = !isEmpty(data.event_time) ? data.event_time : "";
 // Name checks
   if (Validator.isEmpty(data.event_title )) {
-    errors.name = "Title field is required";
+    errors.event_title = "Title field is required";
   }
 // Email checks
   if (Validator.isEmpty(data.event_description)) {
-    errors.email = "Description field is required";
+    errors.event_description = "Description field is required";
   } 
 // Password checks
   if (Validator.isEmpty(data.event_location)) {

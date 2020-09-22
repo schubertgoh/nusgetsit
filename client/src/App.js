@@ -13,12 +13,20 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
+
 import CreateEvent from './components/event/CreateEvent';
 import Event from './components/event/Event';
 import Questions from './components/event/Questions';
 import EventPage from './components/event/EventPage';
 import Sidebar from './components/dashboard/Sidebar';
+
+import CreateCommunity from './components/community/CreateCommunity';
+import Community from './components/community/Community';
+import Communities from './components/community/Communities';
+import CommunityList from './components/community/CommunityList';
+import UserProfile from './components/user/UserProfile';
+import EditProfile from './components/user/EditProfile';
+import Awards from './components/user/Awards';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -48,13 +56,30 @@ class App extends React.Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+
+
+
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Sidebar} />
+              <PrivateRoute exact path="/user" component={UserProfile} />
+              <PrivateRoute exact path="/saved" component={EditProfile} />
+              
+              <PrivateRoute exact path="/awards" component={Awards} />  
+              
               <div>
-              <PrivateRoute exact path="/eventpage" component={EventPage} />
-              <PrivateRoute exact path='/question' component={Questions}/>
-              <div><PrivateRoute exact path='/question/:questionId' component={Event}/></div>
-              <div><PrivateRoute path='/new-question'component={CreateEvent} /></div>
+              <PrivateRoute exact path="/event" component={EventPage} />
+              <PrivateRoute exact path='/events' component={Questions}/>
+              <div><PrivateRoute exact path='/events/:questionId' component={Event}/></div>
+              <div><PrivateRoute path='/new-event'component={CreateEvent} /></div>
+              </div>
+             </Switch>
+
+             <Switch>
+              <div>
+              <PrivateRoute exact path="/communities" component={Communities} />
+              <PrivateRoute exact path='/community' component={CommunityList}/>
+              <div><PrivateRoute exact path='/communities/:questionId' component={Community}/></div>
+              <div><PrivateRoute path='/new-community'component={CreateCommunity} /></div>
               </div>
             </Switch>
           </div>

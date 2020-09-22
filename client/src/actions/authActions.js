@@ -67,8 +67,20 @@ export const logoutUser = () => dispatch => {
 
 export const saveEvent = (userData, history) => dispatch => {
   axios
-    .post("/api/events/createevent", userData)
-    .then(res => history.push("/event")) // re-direct to event on successful event creation
+    .post("/api/events/new-event", userData)
+    .then(res => history.push("/events")) // re-direct to event on successful event creation
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+export const saveCommunity = (userData, history) => dispatch => {
+  axios
+    .post("/api/communities/new-community", userData)
+    .then(res => history.push("/community")) // re-direct to new community on successful creation
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
